@@ -6,7 +6,7 @@ const URL = 'ws://localhost:3030'
 
 class Chat extends Component {
   state = {
-    name: 'yourwifi',
+    name: 'Bob',
     messages: [],
   }
 
@@ -47,11 +47,11 @@ class Chat extends Component {
     return (
       <div>
         <label htmlFor="name">
-          ssid:&nbsp;
+          Name:&nbsp;
           <input
             type="text"
             id={'name'}
-            placeholder={'Enter your wifi...'}
+            placeholder={'Enter your name...'}
             value={this.state.name}
             onChange={e => this.setState({ name: e.target.value })}
           />

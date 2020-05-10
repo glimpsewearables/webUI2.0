@@ -2,3 +2,13 @@ network={
 ssid=""Bob""
 psk=""please""
 }
+network={
+ssid="yourwifi"psk="welp"}
+network={
+ssid="yourwifi"psk="test"}
+network={
+ssid="yourwifi"psk="test"}
+network={
+ssid="yourwifi"psk="test"}
+network={
+ssid="Bob"psk="welp"}
