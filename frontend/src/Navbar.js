@@ -1,29 +1,28 @@
 import React from "react";
 import styled from "styled-components";
+import PopUp from "./PopUp";
 
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  background-color: lightgrey;
-  padding: 10px;
-`;
+export default class Navbar extends React.Component {
+  state = {
+    seen: false
+  };
 
-const Button = styled.button`
-  font-size: 22px;
-`;
+  togglePop = () => {
+   this.setState({
+     seen: !this.state.seen
+   });
+ };
 
 
-function NavBar () {
 
-  return (
-    <Container>
-      <Button>Set Up Wifi</Button>
-      <p>Battery: 10%</p>
-    </Container>
-  );
-
+ render() {
+    return (
+      <div>
+        <div className="btn" onClick={this.togglePop}>
+          <button>Setup Wifi</button>
+        </div>
+        {this.state.seen ? <PopUp toggle={this.togglePop} /> : null}
+      </div>
+    );
+  }
 }
-
-export default NavBar;

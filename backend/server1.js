@@ -9,7 +9,7 @@ const logOutput = (name) => (data) => console.log(`[${name}] ${data.toString()}`
 
 
 function run(words) {
-  const process = spawn('python', ['/home/pi/webUI2.0/test.py', words]);
+  const process = spawn('python', ['home/pi/webUI2.0/test.py', words]);
 
   process.stdout.on(
     'data',
@@ -24,7 +24,7 @@ function run(words) {
 }
 
 function startGlimpse() {
-  const process = spawn('python', ['/home/pi/glimpse-cam/GlimpseCam.py', '--console-log']);
+  const process = spawn('python', ['/home/pi/glimpse-cam/GlimpseCam.py']);
 
   process.stdout.on(
     'data',

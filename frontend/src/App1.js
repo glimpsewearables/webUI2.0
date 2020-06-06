@@ -3,12 +3,13 @@ import logo from './logo.svg'
 import './App.css' 
 import Navbar from './Navbar' 
 import Footer from './Footer' 
-import Video from './Video'  
+import Video from './Video' 
+import OGVideo from './OGVideo' 
+import VideoGrid from './VideoGrid' 
 import styled from 'styled-components' 
 import LiveStream from './LiveStream' 
 
-
-const URL = 'ws://192.168.86.242:4030'
+const URL = 'ws://192.168.86.239:4030'
 
 const Container = styled.div`
   text-align: center;
@@ -66,7 +67,7 @@ class App extends Component {
       <LiveStream />
       <ViewGallery>View ViewGallery</ViewGallery>
       <ButtonGrid>
-        <StyledButton onTouchStart={this.startGlimpse}>Start Camera</StyledButton>
+        <StyledButton onTouchStart={this.startGlimpse}>Active</StyledButton>
         <StyledButton>Test1</StyledButton>
         <StyledButton>Test1</StyledButton>
         <StyledButton>Test1</StyledButton>

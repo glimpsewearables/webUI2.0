@@ -1,15 +1,14 @@
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({ port: 3030 });
-const wsTwo = new WebSocket.Server({ port: 4030 });
 
+const wss = new WebSocket.Server({ port: 3030 });
 const { spawn } = require('child_process')
 
 const logOutput = (name) => (data) => console.log(`[${name}] ${data.toString()}`)
 
 
 function run(words) {
-  const process = spawn('python', ['/home/pi/webUI2.0/test.py', words]);
+  const process = spawn('python', ['/Users/Dylan/test5/test.py', words]);
 
   process.stdout.on(
     'data',
@@ -23,19 +22,6 @@ function run(words) {
 
 }
 
-function startGlimpse() {
-  const process = spawn('python', ['/home/pi/glimpse-cam/GlimpseCam.py', '--console-log']);
-
-  process.stdout.on(
-    'data',
-    logOutput('stdout')
-  );
-
-  process.stderr.on(
-    'data',
-    logOutput('stderr')
-  );
-}
 
 wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(data) {
@@ -47,15 +33,4 @@ wss.on('connection', function connection(ws) {
       }
     });
   });
-
 });
-
-wsTwo.on('connection', function connection(ws) {
-  ws.on('message', function incoming(data) {
-    console.log(data);
-    startGlimpse();
-
-  });
-
-});
-
