@@ -1,4 +1,11 @@
 import React, { Component } from 'react';
+import styled from "styled-components";
+
+const Container = styled.div`
+margin: 0 auto;
+margin-bottom: 20px;
+`;
+
 
 class LiveStream extends Component {
   constructor(props){
@@ -8,10 +15,10 @@ class LiveStream extends Component {
   }
   render(){
     return(
-      <div> { this.state.time }
+      <Container>
 
-      <img src={`${'http://192.168.86.242/mjpeg_read.php?'}?${this.state.time}`}/>
-      </div>
+      <img src={`${'http://192.168.86.242/mjpeg_read.php?'}?${this.state.time}`} width="90%"/>
+      </Container>
     );
   }
   componentDidMount() {

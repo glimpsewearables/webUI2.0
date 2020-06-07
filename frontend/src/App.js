@@ -6,9 +6,11 @@ import Footer from './Footer'
 import Video from './Video'  
 import styled from 'styled-components' 
 import LiveStream from './LiveStream' 
-
-
-const URL = 'ws://192.168.86.242:4030'
+import StartGlimpse from './StartGlimpse'
+import TakeStill from './TakeStill'
+import StartRecord from './StartRecord'
+import StartUpload from './StartUpload'
+import EmailLast from './EmailLast'
 
 const Container = styled.div`
   text-align: center;
@@ -35,29 +37,6 @@ const StyledButton = styled.button`
 `; 
 
 class App extends Component {
-  ws = new WebSocket(URL)
-  componentDidMount() {
-    this.ws.onopen = () => {
-      // on connecting, do nothing but log it to the console
-      console.log('connected')
-    }
-    this.ws.onmessage = evt => {
-      // on receiving a message, add it to the list of messages
-      const message = JSON.parse(evt.data)
-      console.log(message)
-    }
-    this.ws.onclose = () => {
-      console.log('disconnected')
-      // automatically try to reconnect on connection loss
-      this.setState({
-        ws: new WebSocket(URL),
-      })
-    }
-  }
-  startGlimpse = () => {
-    // on submitting the ChatInput form, send the message, add it to the list and reset the input
-    this.ws.send(JSON.stringify('startGlimpse'))
-  }
 
   render() {
     return (
@@ -66,16 +45,13 @@ class App extends Component {
       <LiveStream />
       <ViewGallery>View ViewGallery</ViewGallery>
       <ButtonGrid>
-        <StyledButton onTouchStart={this.startGlimpse}>Start Camera</StyledButton>
-        <StyledButton>Test1</StyledButton>
-        <StyledButton>Test1</StyledButton>
-        <StyledButton>Test1</StyledButton>
-        <StyledButton>Test1</StyledButton>
-        <StyledButton>Test1</StyledButton>
-        <StyledButton>Test1</StyledButton>
-        <StyledButton>Test1</StyledButton>
-        </ButtonGrid>
-      </Container>
+        <StartGlimpse />
+        <TakeStill />
+        <StartRecord />
+        <StartUpload />
+        <EmailLast />
+      </ButtonGrid>
+</Container>
     )
   }
 }
